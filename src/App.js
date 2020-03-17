@@ -1,9 +1,8 @@
-
-
-
-  
+ 
+ 
 import './App.css';
 import React, { Component } from 'react';
+import Form from "./components/Form"
 
 export default class App extends Component {
   constructor(props) {
@@ -11,38 +10,22 @@ export default class App extends Component {
     this.state = {
       expense: [
         {
-          product: 'Food',
-          productDescription: 'Fried Rice',
+          product: 'Drinks',
+          productDescription: 'Alvaro',
           amount: '5', 
           
         }
-      ],
-      product: '',
-      productDescription: '',
-      amount: '',
+      ]
     };
   }
 
-  handleSubmit = e => {
-    e.preventDefault();
-    const newproduct = {
-      product: this.state.product,
-      productDescription: this.state.productDescription,
-      amount: this.state.amount
-    };
+  addNewUser = (newproduct) => {
     this.setState({
       expense: [...this.state.expense, newproduct],
-      product: '',
-      productDescription: '',
-      amount: ''
+     
     });
   };
 
-  handleChange = e => {
-    this.setState({
-      [e.target.name]: e.target.value
-    });
-  };
 
 
 
@@ -78,49 +61,8 @@ export default class App extends Component {
       <div>
         <h1 className="App-header">EXPENSES</h1>
         <div className="container">
-          <div className="form-container">
-            <div className="header">
-              <h2>Add New Expense</h2>
-            </div>
-            <form onSubmit={this.handleSubmit} className="form">
-              <div className="form-row">
-                <label>Product:</label>
-                <input
-                  type="text"
-                  name="product"
-                  value={this.state.product}
-                  onChange={this.handleChange}
-                />
-              </div>
-
-              <div className="form-row">
-                <label>Product Description:</label>
-                <textarea
-                  name="productDescription"
-                  onChange={this.handleChange}
-                  value={this.state.productDescription}
-                />
-              </div>
-
-              <div className="form-row">
-                <label>Total Cost:</label>
-                <span className="GHS">
-                  <input
-                    type="number"
-                    name="amount"
-                    value={this.state.amount}
-                    onChange={this.handleChange}
-                  />
-                </span>
-              </div>
-
-              <div>
-                <button className="btn" type="submit">
-                  Add product
-                </button>
-              </div>
-            </form>
-          </div>
+          <Form addUser = {this.addNewUser} />
+          
           <div className="output-container">
             <div className="output-expense">{expense}</div>
           </div>
