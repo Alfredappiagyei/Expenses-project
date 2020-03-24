@@ -1,8 +1,5 @@
 
-
-
-
-        
+    
     const expense = this.state.expense.map((product, index) => {
         if (product.amount !== '' && product.amount > 0 && product.product !== '') {
           return (
