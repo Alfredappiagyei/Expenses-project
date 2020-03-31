@@ -19,7 +19,7 @@ const myReducer = (expense={previouseState} , action) =>{
               };
               return {...expense,expenses: [...expense,newproduct]}
 
-        break;
+        
 
         default:
             return expense;

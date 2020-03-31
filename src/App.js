@@ -2,9 +2,12 @@
  
 import './App.css';
 import React, { Component } from 'react';
+import {connect} from 'react-redux';
+import {addUser} from "./store/myAction"
 import Form from "./components/Form"
 
-export default class App extends Component {
+
+  class App extends Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -71,3 +74,14 @@ export default class App extends Component {
     );
   }
 }
+
+
+const mapStateToProps = (state) => ({
+  users:state.expense
+})
+
+const mapDispatchToProps = {
+  addUser:addUser
+}
+
+export default connect(mapStateToProps,mapDispatchToProps) (App);

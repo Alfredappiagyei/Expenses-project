@@ -1,6 +1,6 @@
 
     
-    const expense = this.state.expense.map((product, index) => {
+    const expense = this.props.expense.map((product, index) => {
         if (product.amount !== '' && product.amount > 0 && product.product !== '') {
           return (
             <div className="output" key={index}>
