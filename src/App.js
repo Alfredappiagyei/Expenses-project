@@ -1,87 +1,59 @@
- 
- 
-import './App.css';
-import React, { Component } from 'react';
+import React, { Component } from "react";
 import {connect} from 'react-redux';
-import {addUser} from "./store/myAction"
-import Form from "./components/Form"
+import { addUser, deleteUser} from './store/actions';
+import { UserForm } from "./components/Form";
+import User from "./components/Info";
+import "./App.css";
 
+export class App extends Component {
+ 
 
-  class App extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      expense: [
-        {
-          product: 'Drinks',
-          productDescription: 'Alvaro',
-          amount: '5', 
-          
-        }
-      ]
-    };
-  }
-
-  addNewUser = (newproduct) => {
-    this.setState({
-      expense: [...this.state.expense, newproduct],
-     
-    });
+  addNewUser = newUser => {
+    this.props.addUser(newUser)
   };
 
 
+deleteUser = user_id => {
+  this.props.deleteUser(user_id);
+}
 
 
   render() {
-    const expense = this.state.expense.map((product, index) => {
-      if (product.amount !== '' && product.amount > 0 && product.product !== '') {
-        return (
-          <div className="output" key={index}>
-            <div className="expense-content">
-              <div>
-                <h4 className="product">{product.product}</h4>
-              </div>
-
-              <div className="product-details">
-                <small className="time">{product.time}</small>
-                <small className="date">{product.date}</small>
-              </div>
-            </div>
-            <h5>
-              {' '}
-              <span>&#8373;</span> {product.amount}
-            </h5>
-
-            <p className="discription">{product.productDescription}</p>
-          </div>
-        );
-      } else {
-        return null;
-      }
-    });
-
     return (
-      <div>
-        <h1 className="App-header">EXPENSES</h1>
-        <div className="container">
-          <Form addUser = {this.addNewUser} />
-          
-          <div className="output-container">
-            <div className="output-expense">{expense}</div>
-          </div>
+      <div className="App">
+        <div className="form-container">
+          <h1  style={{color:"#fff",}}>ADD NEW USER</h1>
+          <UserForm addUser={this.addNewUser} />
+        </div>
+
+        <div className="users-container">
+          {this.props.users.map((people, index) => {
+            return (
+              <User
+
+                key={people.id}
+                id={people.id}
+                name={people.name}
+                email={people.email}
+                gen={people.gen}
+                removeUser={this.deleteUser}
+              />
+            );
+          })}
         </div>
       </div>
     );
   }
 }
 
-
 const mapStateToProps = (state) => ({
-  users:state.expense
+  users: state.users
 })
 
 const mapDispatchToProps = {
-  addUser:addUser
+  addUser: addUser,
+  deleteUser: deleteUser
+
 }
 
-export default connect(mapStateToProps,mapDispatchToProps) (App);
+export default connect(mapStateToProps, mapDispatchToProps)(App);
