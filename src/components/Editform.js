@@ -1,42 +1,48 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
+import {editUser} from '../store/actions';
 
-export class UserForm extends Component {
+ class Editform extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      name: "",
-      email: "",
-      gen: ""
+        name: props.user.name,
+        email: props.user.email,
+        gen: props.user.gen,
     };
+    this.id = props.match.params.id
   }
 
   handleChange = e => {
     this.setState({
       [e.target.name]: e.target.value
     });
-    console.log(this.state.name);
+    
   };
 
-  handleSubmit = e => {
+  handleSubmit = (e) => {
     e.preventDefault();
-    const newUser = {
+    const updatedInfo = {
       name: this.state.name,
       email: this.state.email,
-      gen: this.state.gen
+      gen: this.state.gen,
+    
     };
-    this.props.addUser(newUser)
-    this.setState({
-      name: "",
-      email: "",
-      gen: ""
-    });
-  };
+    this.props.editUser(this.id, updatedInfo) 
+        this.setState({
+          name:'',
+          email:'',
+          gen:'',
+        });
+
+        this.props.history.push('/');
+      };
 
   render() {
     return (
       <form onSubmit={this.handleSubmit}>
         <div className="form-control">
-          <label  style={{color:"olive",}}>Full name</label>
+          <label  style={{color:"#fff",}}>Full name</label>
           <input
             type="text"
             name="name"
@@ -45,7 +51,7 @@ export class UserForm extends Component {
           />
         </div>
         <div className="form-control">
-          <label  style={{color:"olive",}}>Email</label>
+          <label  style={{color:"#fff",}}>Email</label>
           <input
             type="email"
             name="email"
@@ -54,7 +60,7 @@ export class UserForm extends Component {
           />
         </div>
         <div className="form-control">
-          <label  style={{color:"olive",}}>Gen</label>
+          <label  style={{color:"#fff",}}>Gen</label>
           <input
             type="number"
             name="gen"
@@ -63,7 +69,7 @@ export class UserForm extends Component {
           />
         </div>
         <div>
-          <button type="submit" >Save user</button>
+          <button type="submit" >Change user</button>
         </div>
       </form>
 
@@ -71,4 +77,12 @@ export class UserForm extends Component {
   }
 }
 
-export default UserForm;
+const mapStateToProps = (state, ownProps) => ({
+    user: state.users.find(user => user.id === ownProps.match.params.id)
+    });
+    
+    const mapDispatchToProps = {
+      editUser: editUser
+    }
+
+    export default  connect(mapStateToProps, mapDispatchToProps)(Editform);

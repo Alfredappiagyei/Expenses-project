@@ -1,6 +1,7 @@
 import {v4 as uuid} from "uuid";
 
 
+
 const initialState = {
   users: [
       {
@@ -45,11 +46,20 @@ const usersReducer = (state = initialState, action) => {
           case "DELETE_USER":
               const filteredUsers = state.users.filter(user => user.id != action.payload);
               return  {...state, users: filteredUsers}
+              case "EDIT_USER":
+              const editedUsers = state.users.map(user => {
+                if (user.id === action.user_id) {
+                  return{...user, ...action.updated_info}
+                }
+                else{
+                  return user;
+                }
+              });
+              return{...state, users: editedUsers}
+        default:
+            return state;
+    }
 
-      default:
-          return state;
-
-  }
-};
+}
 
 export default usersReducer;
