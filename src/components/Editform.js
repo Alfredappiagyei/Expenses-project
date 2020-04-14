@@ -42,7 +42,7 @@ import {editUser} from '../store/actions';
     return (
       <form onSubmit={this.handleSubmit}>
         <div className="form-control">
-          <label  style={{color:"#fff",}}>Full name</label>
+          <label  style={{color:"red",}}>Full name</label>
           <input
             type="text"
             name="name"
@@ -51,7 +51,7 @@ import {editUser} from '../store/actions';
           />
         </div>
         <div className="form-control">
-          <label  style={{color:"#fff",}}>Email</label>
+          <label  style={{color:"red",}}>Email</label>
           <input
             type="email"
             name="email"
@@ -60,7 +60,7 @@ import {editUser} from '../store/actions';
           />
         </div>
         <div className="form-control">
-          <label  style={{color:"#fff",}}>Gen</label>
+          <label  style={{color:"red",}}>Gen</label>
           <input
             type="number"
             name="gen"
@@ -69,7 +69,7 @@ import {editUser} from '../store/actions';
           />
         </div>
         <div>
-          <button type="submit" >Change user</button>
+          <button  style={{color:"lawngreen",}} type="submit" >Change user</button>
         </div>
       </form>
 
