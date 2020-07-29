@@ -3,32 +3,7 @@ import {v4 as uuid} from "uuid";
 
 
 const initialState = {
-  users: [
-      {
-          id: "1",
-          name: "Alfred Appiagyei",
-          email: "alfred@gmail.com",
-          gen: 1
-      },
-      {
-        id: "2",
-          name: "Joojo Aninful",
-          email: "aninful@email.com",
-          gen: 6
-      },
-      {
-        id: "3",
-          name: "Samuel Owusu",
-          email: "samuel@gmail.com",
-          gen: 5
-      },
-      {
-        id: "4",
-          name: "Nicolas Coleman",
-          email: "coloman@gmail.com",
-          gen: 3
-      }
-  ]
+  users: [ ]
 
 
 }
@@ -44,7 +19,7 @@ const usersReducer = (state = initialState, action) => {
           };
           return { ...state, users: [...state.users, newUser] };
           case "DELETE_USER":
-              const filteredUsers = state.users.filter(user => user.id != action.payload);
+              const filteredUsers = state.users.filter(user => user.id !== action.payload);
               return  {...state, users: filteredUsers}
               case "EDIT_USER":
               const editedUsers = state.users.map(user => {
@@ -56,6 +31,8 @@ const usersReducer = (state = initialState, action) => {
                 }
               });
               return{...state, users: editedUsers}
+              case "SET_ALL_USERS":
+                  return {users: action.payload};
         default:
             return state;
     }
