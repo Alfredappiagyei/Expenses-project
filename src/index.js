@@ -6,7 +6,7 @@ import{createStore, compose,applyMiddleware} from 'redux';
 import {Provider} from 'react-redux';
 import myReducer from "./store/myReducer";
 import Router from './components/Router';
-import {getFirebase, reduxReactFirebase} from 'react-redux-firebase'
+import {getFirebase, } from 'react-redux-firebase'
 import {getFirestore, reduxFirestore } from 'redux-firestore'
 import firebase from './firebase/configue'
 // import { reduxFirestore } from 'redux-firestore';
