@@ -1,7 +1,7 @@
 import React  from 'react';
 import {connect} from 'react-redux';
 
-import { registerWithEmail } from '../store/authActions';
+import { registerWithEmail, loginWithGoogle } from '../store/authActions';
    function Register(props) {
       
     // if(!props.auth.isLoaded) return null;
@@ -49,7 +49,7 @@ import { registerWithEmail } from '../store/authActions';
   };
   const mapDispatchToProps = {
     registerWithEmail,
-    // loginWithGoogle
+   loginWithGoogle
   };
   export default connect(mapStateToProps ,mapDispatchToProps)(Register);
      
