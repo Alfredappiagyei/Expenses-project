@@ -1,7 +1,7 @@
 import React  from 'react';
 import {connect} from 'react-redux';
 import { loginWithEmail, loginWithGoogle} from '../store/authActions';
-import signin from './photo/signin.png'
+
 import {
   //  BrowserRouter, Route 
   Link
@@ -38,7 +38,7 @@ import {
             </button>
             <hr/>
             <button onClick={props.loginWithGoogle}>
-                <img src={signin} width="160" height="45" alt="loginimg"/>
+              Use Google
                 </button>
                 <Link to="/register" style={{color:"#fff"}}> Do not have an account?.Register</Link>
           </form>

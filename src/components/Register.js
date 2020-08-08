@@ -1,6 +1,5 @@
 import React  from 'react';
 import {connect} from 'react-redux';
-import signin from './photo/signin.png'
 
 import { registerWithEmail, loginWithGoogle } from '../store/authActions';
    function Register(props) {
@@ -32,7 +31,7 @@ import { registerWithEmail, loginWithGoogle } from '../store/authActions';
             </button>
             <hr/>
             <button onClick={props.loginWithGoogle}>
-                <img src={signin} width="160" height="45" alt="registerimg"/>
+                Use Google
                 </button>
           </form>
         </div>
