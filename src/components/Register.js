@@ -15,22 +15,19 @@ import { registerWithEmail, loginWithGoogle } from '../store/authActions';
           };
 
       return (
-        <div class="login">
-        <h2 class="active">sign up</h2>
+        <div className="login">
+        <h2 className="active">sign up</h2>
         
         <form onSubmit={handleSubmit}>
     
-            <input type="email" class="text" name="email" placeholder="email"/>
-            <span class="labels">Email</span>
+            <input type="email" className="text" name="email" placeholder="email"/>
+            <span className="labels">Email</span>
             <br/>
             <br/>
-            <input type="password" class="text" name="password" placeholder="password"/>
-            <span class="labels">password</span>
+            <input type="password" className="text" name="password" placeholder="password"/>
+            <span className="labels">password</span>
             <br/>
-    
-            {/* <input type="checkbox" id="checkbox-1-1" class="custom-checkbox"/>
-            <label for="checkbox-1-1">Keep me signed in</label> */}
-            <button class="button" type="submit">
+            <button className="button" type="submit">
                 Sign In
             </button>
             <button onClick={props.loginWithGoogle}>
@@ -43,9 +40,7 @@ import { registerWithEmail, loginWithGoogle } from '../store/authActions';
  
 
   const mapStateToProps = (state)=>{
-    // return{
-    //   auth:state.firebase.auth
-    // }
+   
   };
   const mapDispatchToProps = {
     registerWithEmail,

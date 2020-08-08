@@ -4,10 +4,6 @@ import { loginWithEmail, loginWithGoogle} from '../store/authActions';
 
 
    function Login(props) {
-
-              // if (!props.auth.isLoaded) return null;
-
-              // if(props.auth.uid) props.history.push('/');
           const handleSubmit = (e) => {
               e.preventDefault();
               let email = e.target.elements.email.value;
@@ -16,22 +12,20 @@ import { loginWithEmail, loginWithGoogle} from '../store/authActions';
           };
       
       return (
-        <div class="login">
-        <h2 class="active">log in</h2>
+        <div className="login">
+        <h2 className="active">log in</h2>
         
         <form onSubmit={handleSubmit}>
     
-            <input type="email" class="text" name="email" placeholder="email"/>
-            <span class="labels">Email</span>
+            <input type="email" className="text" name="email" placeholder="email"/>
+            <span className="labels">Email</span>
             <br/>
             <br/>
-            <input type="password" class="text" name="password" placeholder="password"/>
-            <span class="labels">password</span>
-            <br/>
-    
-            <input type="checkbox" id="checkbox-1-1" class="custom-checkbox"/>
-            <label for="checkbox-1-1">Keep me signed in</label>
-            <button class="button" type="submit">
+            <input type="password" className="text" name="password" placeholder="password"/>
+            <span className="labels">password</span>
+            <br/>     
+            
+            <button className="button" type="submit">
                 Sign In
             </button>
             <button onClick={props.loginWithGoogle}>
@@ -43,9 +37,7 @@ import { loginWithEmail, loginWithGoogle} from '../store/authActions';
   
 
   const mapStateToProps = (state)=>{
-    // return{
-    //   auth:state.firebase.auth,
-    // }
+   
   };
   const mapDispatchToProps ={
     loginWithEmail,

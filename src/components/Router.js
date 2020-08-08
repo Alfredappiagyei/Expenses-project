@@ -4,12 +4,12 @@ import App from '../App';
 import Editform from './Editform';
 import Register from './Register';
 import Login from './Login';
-// import ProtectedRoute from './ProtectRoute'
+ import ProtectedRoute from './ProtectRoute'
 
  const Router = () => {
     return (
         <BrowserRouter>
-        <Route exact path='/' component={App} />
+        <ProtectedRoute exact path='/' component={App} />
         <Route path='/edit/:id' component={Editform} />  
         <Route path='/register' component={Register} />  
         <Route path='/login' component={Login} />       
