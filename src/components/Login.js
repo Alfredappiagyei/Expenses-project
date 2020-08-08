@@ -1,7 +1,11 @@
 import React  from 'react';
 import {connect} from 'react-redux';
 import { loginWithEmail, loginWithGoogle} from '../store/authActions';
-
+import signin from './photo/signin.png'
+import {
+  //  BrowserRouter, Route 
+  Link
+} from 'react-router-dom';
 
    function Login(props) {
 
@@ -32,8 +36,11 @@ import { loginWithEmail, loginWithGoogle} from '../store/authActions';
             <button className="button" type="submit">
                 Sign In
             </button>
+            <hr/>
             <button onClick={props.loginWithGoogle}>
-                Use google</button>
+                <img src={signin} width="160" height="45"/>
+                </button>
+                <Link to="/register" style={{color:"#fff"}}> Do not have an account?.Register</Link>
           </form>
         </div>
       )
