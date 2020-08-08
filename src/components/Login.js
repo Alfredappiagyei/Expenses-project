@@ -38,7 +38,7 @@ import {
             </button>
             <hr/>
             <button onClick={props.loginWithGoogle}>
-                <img src={signin} width="160" height="45"/>
+                <img src={signin} width="160" height="45" alt="loginimg"/>
                 </button>
                 <Link to="/register" style={{color:"#fff"}}> Do not have an account?.Register</Link>
           </form>
