@@ -4,7 +4,7 @@ import { addUser, deleteUser,getAllUsers} from './store/actions';
 import { UserForm } from "./components/Form";
 import User from "./components/Info";
 import "./App.css";
-
+import {logoutUser} from './store/authActions'
  
 
 export class App extends Component {
@@ -32,7 +32,7 @@ componentDidMount(){
         <div className="form-container">
           <h2  style={{color:"#fff",}}>ADD NEW USER</h2>     
           <div className='row'>
-          {/* <button onClick={this.props.logoutUser}>Log out</button> */}
+           <button onClick={this.props.logoutUser}>Log out</button> 
           </div>
           <div className='row'>
           <UserForm addUser={this.addNewUser} />
@@ -73,6 +73,7 @@ const mapDispatchToProps = {
   addUser ,
   deleteUser ,
   getAllUsers,
+  logoutUser
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(App);

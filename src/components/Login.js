@@ -4,13 +4,17 @@ import { loginWithEmail, loginWithGoogle} from '../store/authActions';
 
 
    function Login(props) {
+
+    if(!props.auth.isLoaded) return null;
+    if(props.auth.uid) props.history.push('/');
           const handleSubmit = (e) => {
               e.preventDefault();
               let email = e.target.elements.email.value;
               let password = e.target.elements.password.value;
               props.loginWithEmail(email, password);
           };
-      
+         
+
       return (
         <div className="login">
         <h2 className="active">log in</h2>
@@ -37,7 +41,9 @@ import { loginWithEmail, loginWithGoogle} from '../store/authActions';
   
 
   const mapStateToProps = (state)=>{
-   
+   return {
+     auth:state.firebase.auth
+   }
   };
   const mapDispatchToProps ={
     loginWithEmail,
