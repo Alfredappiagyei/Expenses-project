@@ -5,6 +5,8 @@ import { UserForm } from "./components/Form";
 import User from "./components/Info";
 import "./App.css";
 
+ 
+
 export class App extends Component {
  
 
@@ -28,15 +30,20 @@ componentDidMount(){
     return (
       <div className="App">
         <div className="form-container">
-          <h1  style={{color:"#fff",}}>ADD NEW USER</h1>
+          <h2  style={{color:"#fff",}}>ADD NEW USER</h2>     
+          <div className='row'>
+          {/* <button onClick={this.props.logoutUser}>Log out</button> */}
+          </div>
+          <div className='row'>
           <UserForm addUser={this.addNewUser} />
+          </div>
+         
         </div>
-
         <div className="users-container">
           {this.props.users.map((people, index) => {
             return (
               <User
-
+ 
                 key={people.id}
                 id={people.id}
                 name={people.name}
@@ -52,14 +59,20 @@ componentDidMount(){
   }
 }
 
-const mapStateToProps = (state) => ({
-  users: state.users
-})
+const mapStateToProps = (state) => {
+  console.log(state);
+  return{
+    users: state.users,
+  };
+};
+
+ 
+
 
 const mapDispatchToProps = {
   addUser ,
   deleteUser ,
-  getAllUsers
+  getAllUsers,
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(App);

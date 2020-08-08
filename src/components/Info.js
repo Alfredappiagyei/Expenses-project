@@ -13,7 +13,6 @@ const User = ({ name, email, gen, id, removeUser }) => {
             <button onClick={handleClick}>Remove User</button>
             <Link to = {`/edit/${id}`}>Edit User</Link>
             <hr/>
-
         </div>
     );
 }

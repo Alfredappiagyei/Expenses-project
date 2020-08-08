@@ -2,6 +2,8 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import {editUser} from '../store/actions';
 
+
+
  class Editform extends Component {
   constructor(props) {
     super(props);
@@ -40,7 +42,7 @@ import {editUser} from '../store/actions';
 
   render() {
     return (
-      <form onSubmit={this.handleSubmit}>
+      <form onSubmit={this.handleSubmit} className='editForm'>
         <div className="form-control">
           <label  style={{color:"red",}}>Full name</label>
           <input
@@ -78,7 +80,9 @@ import {editUser} from '../store/actions';
 }
 
 const mapStateToProps = (state, ownProps) => ({
-    user: state.users.find(user => user.id === ownProps.match.params.id)
+    user: state.usersState.users.find(
+      (user) => user.id === ownProps.match.params.id
+      ),
     });
     
     const mapDispatchToProps = {
